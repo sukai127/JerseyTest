@@ -15,20 +15,15 @@ dependencies {
         exclude module: 'junit'
     }
 
+
+    compile files('src/main/resources/libs/common-1.0.jar')
+    compile files('src/main/resources/libs/service-1.0.jar')
+
 }
 
 jar {
     manifest {
         attributes 'Main-Class': 'com.tw.jersey.ServerLauncher'
+        attributes 'Class-Path': 'libs/common-1.0.jar libs/service-1.0.jar '+ configurations.compile.collect { it.getName() }.join(' ')
     }
-}
-
-task createDependencies(type: Copy){
-    into "build/lib/"
-    from configurations.runtime
-}
-
-
-build.doLast{
-    tasks.createDependencies.execute()
 }

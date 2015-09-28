@@ -1,0 +1,8 @@
+rootProject.name = 'JerseyTest'
+
+include 'common'
+
+include 'service'
+
+include 'combo'
+

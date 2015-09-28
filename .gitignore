@@ -1,0 +1,12 @@
+*.iml
+*.ipr
+*.iws
+*.ids
+*.log
+*.pyc
+.idea/
+.gradle/
+build/
+out/
+bin/
+classes/

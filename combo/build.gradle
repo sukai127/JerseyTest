@@ -1,0 +1,34 @@
+apply plugin: 'java'
+
+version = '1.0'
+
+dependencies {
+
+    compile project(':common')
+    compile project(':service')
+
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+
+
+
+    testCompile(group: 'org.mockito', name: 'mockito-all', version: '1.10.19') {
+        exclude module: 'junit'
+    }
+
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'com.tw.jersey.ServerLauncher'
+    }
+}
+
+task createDependencies(type: Copy){
+    into "build/lib/"
+    from configurations.runtime
+}
+
+
+build.doLast{
+    tasks.createDependencies.execute()
+}
